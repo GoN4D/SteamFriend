@@ -238,3 +238,18 @@ class SteamFriends:
 if __name__ == '__main__':
     app = SteamFriends()
     app.get_data()
+    
+    import os
+web_api = os.getenv('web_api', '').strip()
+id_value = os.getenv('id', '').strip()
+if not your repository’s Settings → Secrets and variables → Actions.
+2. Confirm that you have set secrets named web_api and id, and their values are correct, contain no leading/trailing spaces, and are valid.
+3. If you need to reset them, copy and paste the values carefully, and save.
+
+In your workflow (.github/workflows/update.yml), these secrets are used in the step:
+```yaml
+- name: '运行程序💻'
+  env:
+    web_api: ${{ secrets.web_api }}
+    id: ${{ secrets.id }}
+  run: python3 ./steam.py
